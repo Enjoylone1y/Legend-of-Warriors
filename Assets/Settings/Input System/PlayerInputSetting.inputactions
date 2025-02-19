@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInputControl",
+    "name": "PlayerInputSetting",
     "maps": [
         {
             "name": "GamePlay",

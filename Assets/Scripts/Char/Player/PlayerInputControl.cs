@@ -4,15 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerInputControl : MonoBehaviour
 {
-    
+    [Header("控制参数")]
     public float moveSpeed = 200.0f;
-    public float jumpFouce = 16.0f; 
+    public float jumpFouce = 16.0f;
+
+    [Header("物理检查")]
+    public bool isOnGround = true;
+    public float checkRadius = 0.05f;
+    public Vector3 checkOffset = Vector3.zero;
+    public LayerMask platformLayer;
 
     private Rigidbody2D rb;
-    private PlayerInputControl playerInputControl;
-    private PhysicsCheck physicsCheck;
+    private PlayerInputSetting playerInput;
 
     private Vector2 velocity = Vector2.zero;
     private Vector2 scale = Vector2.one;
@@ -21,38 +26,24 @@ public class PlayerControl : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerInputControl = new PlayerInputControl();
-        physicsCheck = GetComponent<PhysicsCheck>();
-        playerInputControl.GamePlay.Jump.started += Jump;
+        playerInput = new PlayerInputSetting();
+        playerInput.GamePlay.Jump.started += Jump;
     }
-
- 
 
     private void OnEnable()
     {
-        playerInputControl.Enable();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        playerInput.Enable();
     }
 
     private void FixedUpdate()
     {
+        isOnGround = Physics2D.OverlapCircle(transform.position + checkOffset, checkRadius, platformLayer);
         Move();
     }
 
     private void Move()
     {
-        Vector2 move = playerInputControl.GamePlay.Move.ReadValue<Vector2>();
+        Vector2 move = playerInput.GamePlay.Move.ReadValue<Vector2>();
         float velocityX = move.x * moveSpeed * Time.deltaTime;
         velocity.Set(velocityX, rb.velocity.y);
         rb.velocity = velocity;
@@ -76,7 +67,7 @@ public class PlayerControl : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
-        if (physicsCheck.isOnGround)
+        if (isOnGround)
         {
             force.Set(force.x, jumpFouce);
             rb.AddForce(force, ForceMode2D.Impulse);
@@ -85,6 +76,11 @@ public class PlayerControl : MonoBehaviour
 
     private void OnDisable()
     {
-        playerInputControl.Disable();
+        playerInput.Disable();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position + checkOffset, checkRadius);
     }
 }
