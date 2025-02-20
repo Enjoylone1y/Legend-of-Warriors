@@ -11,6 +11,7 @@ public class FightObj : Character
     public int atkDamage = 1;
     public bool invincible = false;
     public int hurtInterval = 2;
+    public bool dead = false;
 
     private float invincibleLeftTime = 0;
 
@@ -34,29 +35,30 @@ public class FightObj : Character
     /* 攻击 */
     public virtual void Attack(FightObj target) { }
 
-    /* 触碰伤害 */
-    public virtual void CollisionAttack(FightObj target) { }
-
     /* 
      * 处理了受伤扣血和短暂无敌逻辑
      * 子类对象可以复写函数做受伤表现
      */
-    public virtual void Hurt(int damage)
+    public virtual bool Hurt(FightObj from, int damage)
     {
-        if(invincible) return;
+        if(invincible) return false;
 
         curHp = Math.Max(0, curHp -= damage);
         if (curHp <= 0 )
         {
             Die();
-            return;
+            return false;
         }
         invincible = true;
         invincibleLeftTime = hurtInterval;
+        return true;
     }
 
 
     /* 角色死亡 */
-    protected virtual void Die() { }
+    public virtual void Die() 
+    {
+        dead = true;
+    }
 
 }

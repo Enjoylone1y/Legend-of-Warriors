@@ -23,6 +23,10 @@ public class PlayerInputControl : MonoBehaviour
     private Vector2 scale = Vector2.one;
     private Vector2 force = Vector2.zero;
 
+    [Header("Κά»χ")]
+    public bool playHurtting = false;
+    public int hurtFocus = 6;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,13 +36,15 @@ public class PlayerInputControl : MonoBehaviour
 
     private void OnEnable()
     {
-        playerInput.Enable();
+        playerInput.GamePlay.Enable();
     }
 
     private void FixedUpdate()
     {
         isOnGround = Physics2D.OverlapCircle(transform.position + checkOffset, checkRadius, platformLayer);
-        Move();
+        if (!playHurtting) {
+            Move();
+        }
     }
 
     private void Move()
@@ -67,16 +73,29 @@ public class PlayerInputControl : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
-        if (isOnGround)
+        if (isOnGround && !playHurtting)
         {
             force.Set(force.x, jumpFouce);
             rb.AddForce(force, ForceMode2D.Impulse);
         }
     }
 
+    public void OnHurt(Transform from)
+    {
+        playHurtting = true;
+        rb.velocity = Vector2.zero;
+        Vector2 direction = new Vector2(transform.position.x - from.position.x, 0).normalized;
+        rb.AddForce(direction * hurtFocus, ForceMode2D.Impulse);
+    }
+
+    public void OnDead()
+    {
+        playerInput.GamePlay.Disable();
+    }
+
     private void OnDisable()
     {
-        playerInput.Disable();
+        playerInput.GamePlay.Disable();
     }
 
     private void OnDrawGizmosSelected()

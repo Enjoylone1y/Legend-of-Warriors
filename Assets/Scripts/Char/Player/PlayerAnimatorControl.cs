@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerAnimatorControl : MonoBehaviour
 {
     private static readonly string IS_ON_GROUND = "isOnGround";
     private static readonly string VELOCITY_X = "velocityX";
     private static readonly string VELOCITY_Y = "velocityY";
+    private static readonly string TRIGGER_HURT = "hurt";
+    private static readonly string DEAD = "dead";
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -32,5 +35,15 @@ public class PlayerAnimatorControl : MonoBehaviour
         animator.SetBool(IS_ON_GROUND, playerInputControl.isOnGround);
         animator.SetFloat(VELOCITY_X, Math.Abs(rb.velocity.x));
         animator.SetFloat(VELOCITY_Y, rb.velocity.y);
+    }
+
+    public void OnHurt()
+    {
+        animator.SetTrigger(TRIGGER_HURT);
+    }
+
+    public void OnDead()
+    {
+        animator.SetBool(DEAD, true);
     }
 }
