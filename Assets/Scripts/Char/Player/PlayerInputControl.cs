@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class PlayerInputControl : MonoBehaviour
 {
@@ -10,14 +12,9 @@ public class PlayerInputControl : MonoBehaviour
     public float moveSpeed = 200.0f;
     public float jumpFouce = 16.0f;
 
-    [Header("ŒÔ¿ÌºÏ≤È")]
-    public bool isOnGround = true;
-    public float checkRadius = 0.05f;
-    public Vector3 checkOffset = Vector3.zero;
-    public LayerMask platformLayer;
-
     private Rigidbody2D rb;
     private PlayerInputSetting playerInput;
+    private PlayerPhysicsCheck playerPhysicsCheck;
 
     private Vector2 velocity = Vector2.zero;
     private Vector2 scale = Vector2.one;
@@ -27,11 +24,17 @@ public class PlayerInputControl : MonoBehaviour
     public bool playHurtting = false;
     public int hurtFocus = 6;
 
+    public bool isAttack = false;
+
+    private UnityEvent attackHandler = new UnityEvent();
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerPhysicsCheck = GetComponent<PlayerPhysicsCheck>();
         playerInput = new PlayerInputSetting();
         playerInput.GamePlay.Jump.started += Jump;
+        playerInput.GamePlay.Attack.started += PlayerAttack;
     }
 
     private void OnEnable()
@@ -41,8 +44,7 @@ public class PlayerInputControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isOnGround = Physics2D.OverlapCircle(transform.position + checkOffset, checkRadius, platformLayer);
-        if (!playHurtting) {
+        if (!playHurtting && !isAttack) {
             Move();
         }
     }
@@ -73,10 +75,25 @@ public class PlayerInputControl : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
-        if (isOnGround && !playHurtting)
+        if (playerPhysicsCheck.isOnGround && !playHurtting)
         {
             force.Set(force.x, jumpFouce);
             rb.AddForce(force, ForceMode2D.Impulse);
+        }
+    }
+
+    public void setAttackEvent(UnityAction action)
+    {
+        attackHandler.AddListener(action);
+    }
+
+
+    private void PlayerAttack(InputAction.CallbackContext context)
+    {
+        if (!playHurtting)
+        {
+            isAttack = true;
+            attackHandler?.Invoke();
         }
     }
 
@@ -98,8 +115,5 @@ public class PlayerInputControl : MonoBehaviour
         playerInput.GamePlay.Disable();
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(transform.position + checkOffset, checkRadius);
-    }
+
 }

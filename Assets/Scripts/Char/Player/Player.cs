@@ -11,11 +11,12 @@ public class Player : FightObj
     {
         inputControl = GetComponent<PlayerInputControl>();
         animatorControl = GetComponent<PlayerAnimatorControl>();
+        inputControl.setAttackEvent(AttackHandle);
     }
 
-    public override void Attack(FightObj target)
+    private void AttackHandle()
     {
-        
+        animatorControl.playAttack();
     }
 
     public override bool Hurt(FightObj from, int damage)

@@ -32,9 +32,6 @@ public class FightObj : Character
         }
     }
 
-    /* 攻击 */
-    public virtual void Attack(FightObj target) { }
-
     /* 
      * 处理了受伤扣血和短暂无敌逻辑
      * 子类对象可以复写函数做受伤表现
