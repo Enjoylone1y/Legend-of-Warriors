@@ -10,9 +10,17 @@ public class PlayerPhysicsCheck : MonoBehaviour
     public Vector3 checkOffset = Vector3.zero;
     public LayerMask platformLayer;
 
+    private CapsuleCollider2D collider2D;
+
+    private void Awake()
+    {
+        collider2D = gameObject.GetComponent<CapsuleCollider2D>();
+    }
+
     private void FixedUpdate()
     {
         isOnGround = Physics2D.OverlapCircle(transform.position + checkOffset, checkRadius, platformLayer);
+        collider2D.sharedMaterial.friction = isOnGround ? 0.6f : 0f;
     }
 
     private void OnDrawGizmosSelected()
