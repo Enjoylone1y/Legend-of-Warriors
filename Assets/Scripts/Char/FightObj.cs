@@ -6,12 +6,15 @@ using UnityEngine;
 public class FightObj : Character
 {
     [Header("ÊôÐÔ")]
-    public int maxHp = 100;
-    public int curHp = 0;
+    public float maxHp = 100.0f;
+    public float curHp = 0;
     public int atkDamage = 1;
     public bool invincible = false;
     public int hurtInterval = 2;
     public bool dead = false;
+
+    [Header("ÊÂ¼þ")]
+    public CharEventSO CharEvent;
 
     private float invincibleLeftTime = 0;
 
@@ -41,6 +44,7 @@ public class FightObj : Character
         if(invincible) return false;
 
         curHp = Math.Max(0, curHp -= damage);
+        CharEvent.RaiseEvent(this);
         if (curHp <= 0 )
         {
             Die();
