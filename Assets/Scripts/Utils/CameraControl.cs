@@ -16,10 +16,15 @@ public class CameraControl : MonoBehaviour
         
     }
 
+    private void Start()
+    {
+        UpdateCameraNewBounds();
+    }
+
     private void UpdateCameraNewBounds()
     {
-        var obj = GameObject.FindGameObjectWithTag("bounds");
-        if (obj != null) return;
+        var obj = GameObject.FindGameObjectWithTag("Bounds");
+        if (obj == null) return;
         confiner.m_BoundingShape2D = obj.GetComponent<Collider2D>();
         // 清理上一个bounds的边界缓存
         confiner.InvalidateCache();
