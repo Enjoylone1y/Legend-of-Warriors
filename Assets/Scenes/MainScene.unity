@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 21909511}
   - component: {fileID: 21909513}
   - component: {fileID: 21909512}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 780047019}
   - component: {fileID: 780047021}
   - component: {fileID: 780047020}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Flower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -549828251
-  m_SortingLayer: 6
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -519,8 +519,8 @@ Transform:
   m_Children:
   - {fileID: 21909511}
   - {fileID: 1535078914}
-  - {fileID: 2030777962}
   - {fileID: 1321328353}
+  - {fileID: 2030777962}
   - {fileID: 1801573431}
   - {fileID: 780047019}
   m_Father: {fileID: 0}
@@ -534,9 +534,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1237065211}
-  - component: {fileID: 1237065212}
   - component: {fileID: 1237065213}
-  m_Layer: 0
+  - component: {fileID: 1237065212}
+  m_Layer: 10
   m_Name: Entrance
   m_TagString: Operatable
   m_Icon: {fileID: 0}
@@ -570,6 +570,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eccc33a64570a8147b0222294ef6ff98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneLoadEvent: {fileID: 11400000, guid: 2dddd16e15e12574c88fcdf004f2261e, type: 2}
+  sceneToGo: {fileID: 11400000, guid: 18dd6854a2199484686664fbd7035ca1, type: 2}
+  pos2Go: {x: -10, y: -4, z: 0}
 --- !u!61 &1237065213
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -626,7 +629,7 @@ GameObject:
   - component: {fileID: 1321328353}
   - component: {fileID: 1321328355}
   - component: {fileID: 1321328354}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: entry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -878,7 +881,7 @@ GameObject:
   - component: {fileID: 1535078914}
   - component: {fileID: 1535078916}
   - component: {fileID: 1535078915}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trees
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -939,7 +942,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -657018385
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -998,7 +1001,7 @@ GameObject:
   - component: {fileID: 1801573431}
   - component: {fileID: 1801573433}
   - component: {fileID: 1801573432}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1059,7 +1062,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -171488559
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -1118,11 +1121,11 @@ GameObject:
   - component: {fileID: 2030777962}
   - component: {fileID: 2030777964}
   - component: {fileID: 2030777963}
-  - component: {fileID: 2030777967}
   - component: {fileID: 2030777966}
+  - component: {fileID: 2030777967}
   - component: {fileID: 2030777965}
   - component: {fileID: 2030777968}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1183,7 +1186,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1682445767
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2999,7 +3002,7 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3055,6 +3058,42 @@ PrefabInstance:
     - target: {fileID: 1178712781998490282, guid: 6c989766178fd784d89194be41335538, type: 3}
       propertyPath: m_Name
       value: Boar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178712781998490282, guid: 6c989766178fd784d89194be41335538, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1478823973005314262, guid: 6c989766178fd784d89194be41335538, type: 3}
+      propertyPath: CharEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 473c6384913fd48458c27886699d054e, type: 2}
+    - target: {fileID: 1478823973005314262, guid: 6c989766178fd784d89194be41335538, type: 3}
+      propertyPath: isFightObj
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802307651879711570, guid: 6c989766178fd784d89194be41335538, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802307651879711570, guid: 6c989766178fd784d89194be41335538, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802307651879711570, guid: 6c989766178fd784d89194be41335538, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025653887293882726, guid: 6c989766178fd784d89194be41335538, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025653887293882726, guid: 6c989766178fd784d89194be41335538, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626742236021775773, guid: 6c989766178fd784d89194be41335538, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 7460483081866910727, guid: 6c989766178fd784d89194be41335538, type: 3}
       propertyPath: m_LocalPosition.x

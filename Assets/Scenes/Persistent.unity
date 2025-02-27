@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 453455504}
   - component: {fileID: 453455505}
   - component: {fileID: 453455506}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Attack1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -591,7 +591,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.06, y: -0.010000229, z: -20.592325}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 679233520}
   - component: {fileID: 679233521}
   - component: {fileID: 679233522}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OperateCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -759,10 +759,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 448
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -815,7 +815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 876400474}
   - component: {fileID: 876400475}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OperateView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,8 +875,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1964477659
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 1056520212, guid: 928c2411f2125a447b1e865306370ad4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -958,7 +958,7 @@ Transform:
   m_GameObject: {fileID: 950368477}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.06, y: -0.010000229, z: -20.592325}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1121,9 +1121,9 @@ GameObject:
   - component: {fileID: 1069922217}
   - component: {fileID: 1069922221}
   - component: {fileID: 1069922222}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1167,7 +1167,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1964477659
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 1389769350, guid: f406c95be1535e94da46030165282f1b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1189,7 +1189,7 @@ Transform:
   m_GameObject: {fileID: 1069922212}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.06, y: -1.0100002, z: -10.592325}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1346,7 +1346,7 @@ MonoBehaviour:
   checkOffset: {x: -0.05, y: 0, z: 0}
   platformLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
 --- !u!1 &1070640226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,7 +1358,7 @@ GameObject:
   - component: {fileID: 1070640227}
   - component: {fileID: 1070640228}
   - component: {fileID: 1070640229}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Attack2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1392,7 +1392,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2263,7 +2263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1857513208}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2450,8 +2450,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2105342888}
+  - component: {fileID: 2105342889}
   m_Layer: 0
-  m_Name: SceneLoadManager
+  m_Name: ScenesManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2472,6 +2473,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2105342889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105342887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f8162e6080bd944ab4b0de0fdd0128, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainScene: {fileID: 11400000, guid: 9eb538d551cb46446bc6a31ed4fe2213, type: 2}
+  sceneRequest: {fileID: 11400000, guid: 2dddd16e15e12574c88fcdf004f2261e, type: 2}
+  fadeInSec: 2
 --- !u!1 &2125149499
 GameObject:
   m_ObjectHideFlags: 0
@@ -2483,7 +2499,7 @@ GameObject:
   - component: {fileID: 2125149500}
   - component: {fileID: 2125149501}
   - component: {fileID: 2125149502}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Attack3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2517,7 +2533,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

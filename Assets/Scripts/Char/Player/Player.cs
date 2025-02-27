@@ -34,4 +34,5 @@ public class Player : FightObj
         inputControl.OnDead();
         animatorControl.OnDead();
     }
+
 }

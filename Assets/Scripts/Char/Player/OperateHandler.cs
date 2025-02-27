@@ -9,7 +9,7 @@ public class OperateHandler : MonoBehaviour
 
     public GameObject operateView;
     private bool isInOperateArea = false;
-    private IOperator.OperatorType? type = null;
+    private IOperator curOperator;
     private PlayerInputSetting playerInput;
 
 
@@ -29,10 +29,10 @@ public class OperateHandler : MonoBehaviour
     private void Update()
     {
         operateView.SetActive(isInOperateArea);
-        if(isInOperateArea)
+        if(isInOperateArea && curOperator != null)
         {
             // TODO：根据类型刷新显示
-            switch (type) 
+            switch (curOperator.type) 
             {
                 default:
                     break;
@@ -46,14 +46,14 @@ public class OperateHandler : MonoBehaviour
         if (collision.CompareTag("Operatable"))
         {
             isInOperateArea = true;
-            type = collision.gameObject.GetComponent<IOperator>()?.type;
+            curOperator = collision.gameObject.GetComponent<IOperator>();
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         isInOperateArea = false;
-        type = null;
+        curOperator = null;
     }
 
     private void OnDisable()
@@ -64,15 +64,15 @@ public class OperateHandler : MonoBehaviour
 
     private void OnActionChange(object obj, InputActionChange change)
     {
-       // TODO 判断不同控制类型
+       // TODO 判断不同控制器类型
 
     }
 
     private void OnGameConfirm(InputAction.CallbackContext context)
     {
-        if(isInOperateArea && type == IOperator.OperatorType.Entrance)
+        if(isInOperateArea && curOperator != null && curOperator.type == IOperator.OperatorType.Entrance)
         {
-            Debug.Log("进入场景");
+            curOperator.triggerOperate();
         }
     }
 

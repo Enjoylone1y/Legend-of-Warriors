@@ -9,11 +9,6 @@ public class UIManager : MonoBehaviour
 
     public PlayerStatusUI playerStatusUI;
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     private void OnEnable()
     {
         CharEvent.OnEventRaised += OnFightObjectChange;

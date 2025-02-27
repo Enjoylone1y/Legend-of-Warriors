@@ -13,12 +13,12 @@ TagManager:
   - 
   - Water
   - UI
+  - BackGround
   - Platform
-  - Player
-  - Enemy
   - Operator
-  - 
-  - 
+  - Enemy
+  - Player
+  - Fornt
   - 
   - 
   - 
@@ -46,18 +46,18 @@ TagManager:
   - name: BackGround
     uniqueID: 836597077
     locked: 0
-  - name: Trees
-    uniqueID: 3637948911
-    locked: 0
   - name: Platform
     uniqueID: 1682445767
+    locked: 0
+  - name: Operator
+    uniqueID: 3477330825
+    locked: 0
+  - name: Enemy
+    uniqueID: 4230418585
     locked: 0
   - name: Player
     uniqueID: 2330489637
     locked: 0
-  - name: Grass
+  - name: Fornt
     uniqueID: 4123478737
-    locked: 0
-  - name: Flower
-    uniqueID: 3745139045
     locked: 0
